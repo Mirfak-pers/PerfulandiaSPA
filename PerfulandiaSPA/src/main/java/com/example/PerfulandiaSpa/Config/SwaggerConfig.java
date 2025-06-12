@@ -1,4 +1,4 @@
-package com.example.PerfulandiaSpa.Config;
+package com.example.PerfulandiaSpa.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,10 +8,14 @@ import io.swagger.v3.oas.models.info.Info;
 
 @Configuration
 public class SwaggerConfig {
+
     @Bean
-    public OpenAPI customAPI(){
-        return new OpenAPI().info(new Info().title("PerfulandiaSPA").version("1.0").description("Primera fase de la APi"));
+    public OpenAPI customOpenAPI(){
+        return new OpenAPI().info(new Info()
+        .title("Perfulandia API")
+        .version("1.1")
+        .description("Documentacion del sistema")
+        );
+
     }
-
-
 }

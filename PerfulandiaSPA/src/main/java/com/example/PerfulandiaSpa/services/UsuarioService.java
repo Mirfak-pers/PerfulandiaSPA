@@ -39,4 +39,13 @@ public class UsuarioService {
     public void deleteUsuario(Long id) {
         usuarioRepository.deleteById(id);
     }
+
+    public void updateUsuario(Long id, Usuario usuario) {
+        Usuario existingUsuario = getUsuarioById(id);
+        existingUsuario.setUsername(usuario.getUsername());
+        existingUsuario.setEmail(usuario.getEmail());
+        existingUsuario.setPassword(usuario.getPassword());
+        existingUsuario.setRol(usuario.getRol());
+        usuarioRepository.save(existingUsuario);
+    }
 }
