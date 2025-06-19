@@ -24,16 +24,32 @@ public class CarritoController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping("/{usuarioId}/agregar")
-    @Operation(summary = "Agregar item al carrito", description = "Agrega un item al carrito del usuario especificado.",responses={@ApiResponse(responseCode = "200", description = "Item agregado exitosamente"),@ApiResponse(responseCode = "404",description="No se encontró el carrito del usuario"),@ApiResponse(responseCode = "400", description = "Solicitud incorrecta")
-            , @ApiResponse(responseCode = "500", description = "Error interno del servidor")})
-    public ResponseEntity<Carrito> agregarItem(@PathVariable Long usuarioId, @RequestBody ItemCarrito item) {
-        Carrito carrito = carritoService.obtenerCarrito(usuarioId).orElse(new Carrito());
+@PostMapping("/{usuarioId}/agregar")
+@Operation(
+    summary = "Agregar item al carrito",
+    description = "Agrega un item al carrito del usuario especificado.",
+    responses = {
+        @ApiResponse(responseCode = "200", description = "Item agregado exitosamente"),
+        @ApiResponse(responseCode = "404", description = "Usuario no encontrado"),
+        @ApiResponse(responseCode = "400", description = "Solicitud incorrecta"),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    }
+)
+public ResponseEntity<Carrito> agregarItem(@PathVariable Long usuarioId, @RequestBody ItemCarrito item) {
+    try {
         Usuario usuario = usuarioService.getUsuarioById(usuarioId);
+        if (usuario == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Carrito carrito = carritoService.obtenerCarrito(usuarioId).orElse(new Carrito());
         carrito.setUsuario(usuario);
+        item.setCarrito(carrito); // Asegura la relación bidireccional
         Carrito updatedCarrito = carritoService.agregarItem(carrito, item, usuario);
         return ResponseEntity.ok(updatedCarrito);
+    } catch (Exception e) {
+        return ResponseEntity.status(500).build();
     }
+}
 
     @GetMapping("/{usuarioId}")
     @Operation(summary = "Obtener carrito por usuario", description = "Devuelve el carrito de compras del usuario especificado.",responses = {@ApiResponse(responseCode = "200", description = "Carrito obtenido exitosamente"),

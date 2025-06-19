@@ -2,10 +2,12 @@
 package com.example.PerfulandiaSpa.services;
 
 import com.example.PerfulandiaSpa.model.ReporteVenta;
+import com.example.PerfulandiaSpa.model.Sucursal;
 import com.example.PerfulandiaSpa.repository.ReporteVentaRepositoryJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,5 +26,10 @@ public class ReporteVentaService {
 
     public void deleteReporteVenta(String id) {
         reporteVentaRepository.deleteById(id);
+    }
+
+    public List<ReporteVenta> getReporteVentas(Sucursal sucursal) {
+    // Implement logic to fetch reportes for the given sucursal
+    return new ArrayList<>();
     }
 }

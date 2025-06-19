@@ -1,6 +1,7 @@
 package com.example.PerfulandiaSpa.controller;
 
 import com.example.PerfulandiaSpa.model.ReporteVenta;
+import com.example.PerfulandiaSpa.model.Sucursal;
 import com.example.PerfulandiaSpa.services.ReporteVentaService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,6 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/v1/reporte-ventas")
@@ -43,5 +47,17 @@ public class ReporteVentasController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(reportes);
+    }
+
+    
+    @GetMapping
+    @Operation(summary = "Obtener reporte de ventas por sucursal", description = "Devuelve un reporte de ventas filtrado por sucursal.", responses = {@ApiResponse(responseCode = "200", description = "Reporte de ventas obtenido exitosamente"),
+            @ApiResponse(responseCode = "404", description = "Sucursal no encontrada"),@ApiResponse(responseCode = "500", description = "Error interno del servidor")})
+    public String getMethodName(@RequestParam String param) {
+        return new String();
+    }
+    public ResponseEntity<List<ReporteVenta>> getReporteVentas(Sucursal sucursal) {
+        List<ReporteVenta> reportes = reporteVentaService.getReporteVentas(sucursal);
+        return new ResponseEntity<>(reportes, HttpStatus.OK);
     }
 }

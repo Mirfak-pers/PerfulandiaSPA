@@ -23,7 +23,7 @@ public class EnvioDetalle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "envio_id")
     private Envio envio;
 

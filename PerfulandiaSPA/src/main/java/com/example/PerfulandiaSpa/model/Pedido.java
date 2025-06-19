@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -34,7 +35,7 @@ public class Pedido {
     private List<Producto> productos;
 
     @Column(nullable = false)
-    private int fechaCreacion;
+    private Date fechaCreacion;
 
     @Column(nullable = false)
     private String estado;
