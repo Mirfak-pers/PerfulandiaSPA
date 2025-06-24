@@ -32,4 +32,9 @@ public class ReporteVentaService {
     // Implement logic to fetch reportes for the given sucursal
     return new ArrayList<>();
     }
+    
+    public ReporteVenta getReporteVentaById(String id) {
+        return reporteVentaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reporte de venta no encontrado con ID: " + id));
+    }
 }

@@ -25,4 +25,7 @@ public class ReporteInventarioService {
     public void deleteReporteInventario(String id) {
         reporteInventarioRepository.deleteById(id);
     }
+        public ReporteInventario getReporteInventarioByID(String id){
+        return reporteInventarioRepository.findById(id).orElse(null);
+    }
 }

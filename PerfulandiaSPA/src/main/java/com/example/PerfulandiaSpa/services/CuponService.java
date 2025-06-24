@@ -29,4 +29,5 @@ public class CuponService {
     public void deleteCupon(Long id) {
         cuponRepository.deleteById(id);
     }
+    
 }

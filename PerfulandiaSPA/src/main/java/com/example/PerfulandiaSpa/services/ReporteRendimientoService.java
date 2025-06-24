@@ -32,4 +32,10 @@ public class ReporteRendimientoService {
     public List<ReporteRendimiento> getReportesBySucursal(Sucursal sucursal) {
     return reporteRendimientoRepository.findBySucursal(sucursal);
     }
+
+        public List<ReporteRendimiento> getReportesById(Long id) {
+        return reporteRendimientoRepository.buscarPorId(id)
+                .map(List::of)
+                .orElseGet(List::of);
+    }
 }
