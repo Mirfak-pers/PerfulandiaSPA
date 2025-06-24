@@ -50,7 +50,7 @@ public class ReporteVentasController {
     }
 
     
-    @GetMapping
+    @GetMapping("/{id}")
     @Operation(summary = "Obtener reporte de ventas por sucursal", description = "Devuelve un reporte de ventas filtrado por sucursal.", responses = {@ApiResponse(responseCode = "200", description = "Reporte de ventas obtenido exitosamente"),
             @ApiResponse(responseCode = "404", description = "Sucursal no encontrada"),@ApiResponse(responseCode = "500", description = "Error interno del servidor")})
     public String getMethodName(@RequestParam String param) {

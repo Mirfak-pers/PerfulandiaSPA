@@ -5,7 +5,6 @@ import com.example.PerfulandiaSpa.model.EnvioDetalle;
 import com.example.PerfulandiaSpa.services.EnvioDetalleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -41,7 +40,7 @@ class EnvioDetalleControllerTest {
 
         ResponseEntity<List<EnvioDetalle>> response = envioDetalleController.getAllEnvioDetalles();
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode());
         assertEquals(detalles, response.getBody());
         verify(envioDetalleService, times(1)).getAllEnvioDetalles();
     }
@@ -56,7 +55,7 @@ class EnvioDetalleControllerTest {
 
         ResponseEntity<EnvioDetalle> response = envioDetalleController.createEnvioDetalle(inputDetalle);
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode());
         assertEquals(savedDetalle, response.getBody());
         verify(envioDetalleService, times(1)).saveEnvioDetalle(inputDetalle);
     }
@@ -69,7 +68,7 @@ class EnvioDetalleControllerTest {
 
         ResponseEntity<Void> response = envioDetalleController.deleteEnvioDetalle(id);
 
-        assertEquals(204, response.getStatusCodeValue());
+        assertEquals(204, response.getStatusCode());
         assertNull(response.getBody());
         verify(envioDetalleService, times(1)).deleteEnvioDetalle(id);
     }
