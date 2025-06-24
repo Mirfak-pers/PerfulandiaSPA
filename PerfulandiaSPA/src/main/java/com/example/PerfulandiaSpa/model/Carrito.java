@@ -33,4 +33,18 @@ public class Carrito {
 
 @OneToMany(mappedBy = "carrito", cascade = CascadeType.ALL, orphanRemoval = true)
 private List<ItemCarrito> items = new ArrayList<>();
+
+public void setUsuario(Usuario usuario) {
+    if (usuario == null) {
+        throw new IllegalArgumentException("El usuario no puede ser nulo");
+    }
+    this.usuario = usuario;
+}
+
+public void setItems(List<ItemCarrito> items) {
+    if (items == null) {
+        throw new IllegalArgumentException("La lista de items no puede ser nula");
+    }
+    this.items = items;
+}
 }

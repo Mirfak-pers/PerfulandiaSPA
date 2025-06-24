@@ -91,7 +91,7 @@ class ProductoControllerTest {
     @Test
     void updateProducto_success() {
         Producto producto = new Producto();
-        producto.setNombre("Nuevo");
+        producto.setNombre("Nombre");
         producto.setCategoria("Cat");
         producto.setEstado("Activo");
         producto.setPrecio(1000);

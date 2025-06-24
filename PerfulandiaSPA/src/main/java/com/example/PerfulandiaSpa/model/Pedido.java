@@ -8,7 +8,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.JoinColumn;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,7 +17,6 @@ import java.util.List;
 @Entity
 @Table(name = "Pedido")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Pedido {
 
@@ -47,4 +45,20 @@ public class Pedido {
     @ManyToOne
     @JoinColumn(name = "sucursal_id")
     private Sucursal sucursal;
+
+
+    public Pedido(int id, List<Producto> productos, Date fechaCreacion, String estado, Usuario usuario, Sucursal sucursal) {
+        this.id = id;
+        this.productos = productos;
+        this.fechaCreacion = fechaCreacion;
+        setEstado(estado);
+        this.usuario = usuario;
+        this.sucursal = sucursal;
+    }
+    public void setEstado(String estado) {
+        if (estado == null || estado.trim().isEmpty()) {
+            throw new IllegalArgumentException("El estado no puede estar vacío");
+        }
+        this.estado = estado;
+    }
 }

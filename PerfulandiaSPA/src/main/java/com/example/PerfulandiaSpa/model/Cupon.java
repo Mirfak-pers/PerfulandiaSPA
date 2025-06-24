@@ -23,4 +23,23 @@ public class Cupon {
 
     @Column(nullable = false)
     private boolean activo;
+    public Cupon(String codigo_cupon, double descuento, boolean activo) {
+        this.setCodigo_cupon(codigo_cupon);
+        this.setDescuento(descuento);
+        this.setActivo(activo);
+    }
+
+    public void setCodigo_cupon(String codigo_cupon) {
+        if (codigo_cupon == null || codigo_cupon.trim().isEmpty()) {
+            throw new IllegalArgumentException("El código del cupón no puede estar vacío");
+        }
+        this.codigo_cupon = codigo_cupon;
+    }
+
+    public void setDescuento(double descuento) {
+        if (descuento <= 0) {
+            throw new IllegalArgumentException("El descuento debe ser mayor a 0");
+        }
+        this.descuento = descuento;
+    }
 }

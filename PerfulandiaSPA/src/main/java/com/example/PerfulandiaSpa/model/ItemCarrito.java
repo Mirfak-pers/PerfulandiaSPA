@@ -1,7 +1,6 @@
 package com.example.PerfulandiaSpa.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "item_carrito")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class ItemCarrito {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +22,16 @@ public class ItemCarrito {
     @ManyToOne
     @JoinColumn(name = "carrito_id")
     private Carrito carrito;
+
+    public ItemCarrito(Producto producto, int cantidad, Carrito carrito) {
+        this.setProducto(producto);
+        this.setCantidad(cantidad);
+        this.setCarrito(carrito);
+    }
+    public void setCantidad(int cantidad) {
+        if (cantidad <= 0) {
+            throw new IllegalArgumentException("La cantidad debe ser mayor a cero");
+        }
+        this.cantidad = cantidad;
+    }
 }
