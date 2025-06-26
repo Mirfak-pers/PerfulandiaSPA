@@ -4,7 +4,7 @@ import com.example.PerfulandiaSpa.model.Pedido;
 import com.example.PerfulandiaSpa.model.Sucursal;
 import com.example.PerfulandiaSpa.model.Usuario;
 import com.example.PerfulandiaSpa.repository.PedidoRepository;
-import com.example.PerfulandiaSpa.repository.PedidoRepositoryJpa;
+import com.example.PerfulandiaSpa.repository.PedidoRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
@@ -16,7 +16,7 @@ import java.util.List;
 public class PedidoService {
 
     @Autowired
-    private PedidoRepositoryJpa pedidoRepositoryjpa;
+    private PedidoRepositoryJPA pedidoRepositoryjpa;
     private PedidoRepository pedidoRepository;
     public List<Pedido> getAllPedidos() {
         return pedidoRepositoryjpa.findAll();

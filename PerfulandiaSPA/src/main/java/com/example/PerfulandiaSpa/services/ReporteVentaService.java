@@ -3,7 +3,7 @@ package com.example.PerfulandiaSpa.services;
 
 import com.example.PerfulandiaSpa.model.ReporteVenta;
 import com.example.PerfulandiaSpa.model.Sucursal;
-import com.example.PerfulandiaSpa.repository.ReporteVentaRepositoryJpa;
+import com.example.PerfulandiaSpa.repository.ReporteVentaRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class ReporteVentaService {
 
     @Autowired
-    private ReporteVentaRepositoryJpa reporteVentaRepository;
+    private ReporteVentaRepositoryJPA reporteVentaRepository;
 
     public ReporteVenta saveReporteVenta(ReporteVenta venta) {
         return reporteVentaRepository.save(venta);

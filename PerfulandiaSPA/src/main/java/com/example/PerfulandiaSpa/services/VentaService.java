@@ -4,7 +4,7 @@ package com.example.PerfulandiaSpa.services;
 
 import com.example.PerfulandiaSpa.model.Venta;
 import com.example.PerfulandiaSpa.repository.VentaRepository;
-import com.example.PerfulandiaSpa.repository.VentaRepositoryJpa;
+import com.example.PerfulandiaSpa.repository.VentaRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
@@ -16,7 +16,7 @@ import java.util.List;
 public class VentaService {
 
     @Autowired
-    private VentaRepositoryJpa ventaRepositoryJpa;
+    private VentaRepositoryJPA ventaRepositoryJpa;
     private VentaRepository ventaRepository;
 
     public List<Venta> getAllVentas() {

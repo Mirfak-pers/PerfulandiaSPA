@@ -4,7 +4,7 @@ package com.example.PerfulandiaSpa.services;
 import com.example.PerfulandiaSpa.model.ReporteRendimiento;
 import com.example.PerfulandiaSpa.model.Sucursal;
 import com.example.PerfulandiaSpa.repository.ReporteRendimientoRepository;
-import com.example.PerfulandiaSpa.repository.ReporteRendimientoRepositoryJpa;
+import com.example.PerfulandiaSpa.repository.ReporteRendimientoRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class ReporteRendimientoService {
 
     @Autowired
-    private ReporteRendimientoRepositoryJpa reporteRendimientoRepositoryJpa;
+    private ReporteRendimientoRepositoryJPA reporteRendimientoRepositoryJpa;
     private ReporteRendimientoRepository reporteRendimientoRepository;
 
     public ReporteRendimiento saveReporteRendimiento(ReporteRendimiento rendimiento) {
